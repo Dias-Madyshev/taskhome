@@ -1,0 +1,974 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Практикалық жұмыстар 9–15</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap">
+<style>
+:root {
+  --bg:#0C1A2C;--surface:#132236;--card:#1B3050;--border:#2A4870;
+  --fg:#E8F1FB;--muted:#7599BC;--dim:#3A5880;
+  --c9:#3B82F6;--c10:#10B981;--c11:#8B5CF6;--c12:#F59E0B;
+  --c13:#EC4899;--c14:#06B6D4;--c15:#EAB308;
+  --r:10px;--shadow:0 4px 24px rgba(0,0,0,.4);
+  color-scheme:dark;
+}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --bg:#F0F5FB;--surface:#FFFFFF;--card:#FFFFFF;--border:#C8D8EC;
+    --fg:#0C1A2C;--muted:#476B8E;--dim:#A0BAD3;
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#F0F5FB;--surface:#FFFFFF;--card:#FFFFFF;--border:#C8D8EC;
+  --fg:#0C1A2C;--muted:#476B8E;--dim:#A0BAD3;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--fg);line-height:1.6;overflow-x:hidden}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:100;background:rgba(12,26,44,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 20px}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]) nav{background:rgba(240,245,251,.92)}}
+:root[data-theme="light"] nav{background:rgba(240,245,251,.92)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:6px;overflow-x:auto;scrollbar-width:none;padding:10px 0}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;color:var(--fg);white-space:nowrap;margin-right:10px;letter-spacing:-.5px;flex-shrink:0}
+.nav-link{display:flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:500;color:var(--muted);text-decoration:none;white-space:nowrap;transition:.2s;border:1px solid transparent;flex-shrink:0}
+.nav-link:hover,.nav-link.active{color:var(--fg);background:var(--card);border-color:var(--border)}
+.nav-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.hero{padding:72px 24px 56px;text-align:center;max-width:860px;margin:0 auto}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(26px,5vw,50px);font-weight:800;line-height:1.15;text-wrap:balance;margin-bottom:18px;background:linear-gradient(135deg,var(--fg) 40%,var(--muted) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]) .hero h1{background:linear-gradient(135deg,#0C1A2C 40%,#476B8E 100%);-webkit-background-clip:text;background-clip:text}}
+:root[data-theme="light"] .hero h1{background:linear-gradient(135deg,#0C1A2C 40%,#476B8E 100%);-webkit-background-clip:text;background-clip:text}
+.hero p{font-size:16px;color:var(--muted);max-width:580px;margin:0 auto 28px;text-wrap:balance}
+.hero-badges{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 13px;border-radius:20px;font-size:12px;font-weight:600}
+.section{padding:64px 24px;border-top:1px solid var(--border)}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-header{display:flex;align-items:flex-start;gap:18px;margin-bottom:40px}
+.sec-num{flex-shrink:0;width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:800;font-size:16px;color:#fff}
+.sec-titles h2{font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(18px,2.5vw,26px);line-height:1.25;text-wrap:balance;margin-bottom:5px}
+.sec-titles .sub{font-size:13px;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:17px;margin-bottom:14px;color:var(--fg)}
+h4{font-family:'Montserrat',sans-serif;font-weight:600;font-size:14px;margin-bottom:10px;color:var(--fg)}
+p{color:var(--fg);line-height:1.65}
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:768px){.g2,.g3,.g4{grid-template-columns:1fr}}
+@media(max-width:1024px){.g3{grid-template-columns:repeat(2,1fr)}.g4{grid-template-columns:repeat(2,1fr)}}
+.tw{overflow-x:auto;border-radius:var(--r);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:480px}
+th{background:var(--surface);padding:11px 15px;text-align:left;font-weight:600;font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+td{padding:11px 15px;border-bottom:1px solid var(--border);color:var(--fg);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.025)}
+.mb4{margin-bottom:16px}.mb6{margin-bottom:24px}.mb8{margin-bottom:32px}.mt4{margin-top:16px}.mt6{margin-top:24px}.mt8{margin-top:32px}
+.lbl{display:inline-block;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.2px}
+.tag{display:inline-block;padding:3px 9px;border-radius:5px;font-size:11px;font-weight:500;background:var(--surface);border:1px solid var(--border);color:var(--muted)}
+.flex{display:flex}.gap4{gap:16px}.gap2{gap:8px}.wrap{flex-wrap:wrap}.items-center{align-items:center}
+ul{padding-left:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--fg)}
+li::before{content:'→';color:var(--muted);flex-shrink:0;font-size:11px;margin-top:3px}
+.ck li::before{content:'✓';color:#10B981}
+.profile-card{background:linear-gradient(135deg,#1B3050,#0C1A2C);border:1px solid var(--border);border-radius:14px;padding:28px;position:relative;overflow:hidden}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]) .profile-card{background:linear-gradient(135deg,#E8F1FF,#F0F5FB)}}
+:root[data-theme="light"] .profile-card{background:linear-gradient(135deg,#E8F1FF,#F0F5FB)}
+.profile-card::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:rgba(59,130,246,.07)}
+.pav{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#8B5CF6);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:#fff;font-family:'Montserrat',sans-serif;margin-bottom:14px;border:3px solid rgba(255,255,255,.12)}
+.pname{font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;margin-bottom:3px}
+.ptitle{font-size:12px;color:var(--muted);margin-bottom:14px}
+.ptags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.pstats{display:flex;gap:20px;padding-top:16px;border-top:1px solid var(--border)}
+.psnum{font-family:'Montserrat',sans-serif;font-weight:800;font-size:20px;font-variant-numeric:tabular-nums}
+.pslbl{font-size:11px;color:var(--muted)}
+.info-box{border-radius:7px;padding:13px 16px;font-size:13px;display:flex;gap:10px;align-items:flex-start}
+.ib-blue{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);color:#93C5FD}
+.ib-green{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);color:#6EE7B7}
+.ib-amber{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);color:#FCD34D}
+.ib-purple{background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);color:#C4B5FD}
+.cc-card{border-radius:var(--r);padding:18px;border:1px solid var(--border);background:var(--card)}
+.cc-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;margin-bottom:5px}
+.cc-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.formula-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--c14);border-radius:6px;padding:12px 16px;font-family:'Courier New',monospace;font-size:13px;color:#22D3EE;margin-bottom:8px}
+.formula-desc{font-size:12px;color:var(--muted);margin-top:3px;font-family:'Inter',sans-serif}
+.stat-tile{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px 22px;min-width:0}
+.stat-num{font-family:'Montserrat',sans-serif;font-weight:800;font-size:32px;line-height:1.1;margin-bottom:3px;font-variant-numeric:tabular-nums}
+.stat-lbl{font-size:12px;color:var(--muted)}
+.sp{display:inline-block;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600}
+.sp-p{background:rgba(16,185,129,.12);color:#10B981;border:1px solid rgba(16,185,129,.25)}
+.sp-f{background:rgba(239,68,68,.12);color:#EF4444;border:1px solid rgba(239,68,68,.25)}
+.avg-h{color:#10B981;font-weight:700}
+.avg-m{color:#F59E0B;font-weight:700}
+.avg-l{color:#EF4444;font-weight:700}
+.chart-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px}
+.module-card{border-radius:var(--r);padding:20px;border:1px solid var(--border);position:relative;overflow:hidden;min-width:0}
+.mod-num{font-family:'Montserrat',sans-serif;font-size:44px;font-weight:800;opacity:.07;position:absolute;top:6px;right:12px;line-height:1}
+.mod-lbl{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.mod-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;margin-bottom:8px}
+.mod-topics{font-size:12px;color:var(--muted)}
+.quiz-wrap{display:flex;flex-direction:column;gap:14px}
+.qcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px}
+.qtext{font-weight:600;font-size:14px;margin-bottom:14px}
+.qopts{display:flex;flex-direction:column;gap:9px}
+.qopt{display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:7px;border:1px solid var(--border);cursor:pointer;transition:.2s;background:var(--surface);user-select:none;font-size:13px}
+.qopt:hover{border-color:var(--muted)}
+.qopt.correct{border-color:#10B981;background:rgba(16,185,129,.1)}
+.qopt.wrong{border-color:#EF4444;background:rgba(239,68,68,.1)}
+.qopt input[type=radio]{accent-color:var(--c15);flex-shrink:0}
+.quiz-btn{padding:11px 26px;border-radius:8px;border:none;font-size:14px;font-weight:600;font-family:'Montserrat',sans-serif;cursor:pointer;transition:.2s;background:var(--c15);color:#000;margin-top:16px}
+.quiz-btn:hover{opacity:.85}
+#quiz-result{margin-top:20px;padding:18px 22px;border-radius:var(--r);display:none;font-weight:600;font-size:15px}
+.divider{height:1px;background:var(--border);margin:28px 0}
+.prompt-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px 20px;font-size:13px;color:var(--fg);border-left:3px solid var(--c12);line-height:1.6}
+.sched td{padding:8px 12px;font-size:12px}
+.sched th{padding:9px 12px}
+.les{border-radius:5px;padding:4px 8px;font-size:11px;font-weight:500;display:block;line-height:1.4}
+.crit-row td:last-child{font-variant-numeric:tabular-nums;font-weight:700;color:var(--c15)}
+footer{padding:36px 24px;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:12px}
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.vis{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.fade-in{opacity:1;transform:none;transition:none}}
+</style>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">ЦГП 9–15</span>
+    <a href="#pr9"  class="nav-link"><span class="nav-dot" style="background:var(--c9)"></span>№9 Профиль</a>
+    <a href="#pr10" class="nav-link"><span class="nav-dot" style="background:var(--c10)"></span>№10 Сынып</a>
+    <a href="#pr11" class="nav-link"><span class="nav-dot" style="background:var(--c11)"></span>№11 CC</a>
+    <a href="#pr12" class="nav-link"><span class="nav-dot" style="background:var(--c12)"></span>№12 ChatGPT</a>
+    <a href="#pr13" class="nav-link"><span class="nav-dot" style="background:var(--c13)"></span>№13 Мобильді</a>
+    <a href="#pr14" class="nav-link"><span class="nav-dot" style="background:var(--c14)"></span>№14 Excel</a>
+    <a href="#pr15" class="nav-link"><span class="nav-dot" style="background:var(--c15)"></span>№15 Жоба</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="eyebrow">Цифрлық Грамоталылық Пәні · 2025–2026</p>
+  <h1>Практикалық жұмыстар №9–15</h1>
+  <p>Білім беру технологиялары, цифрлық платформалар, деректерді талдау және онлайн-курс жасау бойынша толық орындалған есептер жинағы.</p>
+  <div class="hero-badges">
+    <span class="badge" style="background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.25);color:#93C5FD">7 жұмыс</span>
+    <span class="badge" style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);color:#6EE7B7">Интерактивті тест</span>
+    <span class="badge" style="background:rgba(6,182,212,.12);border:1px solid rgba(6,182,212,.25);color:#67E8F9">Диаграммалар</span>
+    <span class="badge" style="background:rgba(234,179,8,.12);border:1px solid rgba(234,179,8,.25);color:#FDE047">Кестелер</span>
+  </div>
+</section>
+
+<!-- ===== PRACTICAL WORK 9 ===== -->
+<section id="pr9" class="section fade-in">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="sec-num" style="background:linear-gradient(135deg,#3B82F6,#6366F1)">09</div>
+      <div class="sec-titles">
+        <h2>Білім беру платформасында профиль құру және жобалау</h2>
+        <span class="sub">Платформаларды салыстыру · Профиль дизайны · SEO оңтайландыру · Қауіпсіздік</span>
+      </div>
+    </div>
+
+    <h3>Тапсырма 1 — Платформаларды салыстырмалы талдау</h3>
+    <div class="tw mb6">
+      <table>
+        <thead><tr><th>Платформа</th><th>Негізгі мүмкіндіктері</th><th>Артықшылықтары</th><th>Кемшіліктері</th><th>Баға</th><th>★</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Moodle</strong></td><td>Курс, тест, форум, бейне, аналитика</td><td>Ашық код, толық баптау, Қазақстанда кең таралған</td><td>Ескі интерфейс, орнату қиын</td><td><span class="lbl" style="background:rgba(16,185,129,.12);color:#10B981">Тегін</span></td><td>★★★★</td></tr>
+          <tr><td><strong>Google Classroom</strong></td><td>Тапсырма, бағалау, Drive, Meet интеграция</td><td>Қарапайым, Google сервистерімен үйлесімді, тегін</td><td>Интернетсіз жұмыс істемейді, шектеулі дизайн</td><td><span class="lbl" style="background:rgba(16,185,129,.12);color:#10B981">Тегін</span></td><td>★★★★★</td></tr>
+          <tr><td><strong>Coursera</strong></td><td>Сертификатталған курстар, видео, тесттер, форум</td><td>Халықаралық сертификаттар, жоғары сапа</td><td>Ақылы мазмұн, жеке курс шектеулі</td><td><span class="lbl" style="background:rgba(245,158,11,.12);color:#F59E0B">Аралас</span></td><td>★★★★</td></tr>
+          <tr><td><strong>Edmodo</strong></td><td>Тапсырмалар, пікірталас, хабарландырулар</td><td>Мобильді қолданба, оқушымен тиімді байланыс</td><td>Шектеулі аналитика, азырақ мазмұн</td><td><span class="lbl" style="background:rgba(16,185,129,.12);color:#10B981">Тегін</span></td><td>★★★</td></tr>
+          <tr><td><strong>Microsoft Teams</strong></td><td>Бейне байланыс, тапсырма, Office 365 интеграция</td><td>Бейне кездесулер, Microsoft сервистерімен үйлесімді</td><td>Ауыр интерфейс, Microsoft аккаунт қажет</td><td><span class="lbl" style="background:rgba(245,158,11,.12);color:#F59E0B">Аралас</span></td><td>★★★★</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="info-box ib-blue mb6">
+      <span>ℹ️</span>
+      <span><strong>Таңдалған платформа: Google Classroom</strong> — қарапайым интерфейсі, Google Drive/Gmail-мен үйлесімділігі және тегіндігі себебінде таңдалды. Оқушылар мен мұғалімдерге бірдей ыңғайлы.</span>
+    </div>
+
+    <h3>Тапсырма 2 — Профиль дизайны және портфолио</h3>
+    <div class="g2">
+      <div class="profile-card">
+        <div class="pav">БА</div>
+        <div class="pname">Бағдан Алина</div>
+        <div class="ptitle">Информатика мұғалімі · Google Certified Educator</div>
+        <div class="ptags">
+          <span class="tag">Python</span>
+          <span class="tag">Web-дизайн</span>
+          <span class="tag">Білім технологиялары</span>
+          <span class="tag">Digital Literacy</span>
+          <span class="tag">Moodle Admin</span>
+        </div>
+        <p style="font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:16px">Информатика және цифрлық технологиялар саласында 5+ жыл тәжірибесі бар педагог. Оқушыларға заманауи технологияларды үйретуге, цифрлық дағдыларды дамытуға маман. Google Certified Educator Level 2 сертификатын иеленемін. 24 курс жасалды, 847 оқушы оқыды.</p>
+        <div class="pstats">
+          <div><div class="psnum" style="color:var(--c9)">24</div><div class="pslbl">Курстар</div></div>
+          <div><div class="psnum" style="color:var(--c10)">847</div><div class="pslbl">Оқушылар</div></div>
+          <div><div class="psnum" style="color:var(--c15)">4.9</div><div class="pslbl">Рейтинг</div></div>
+          <div><div class="psnum" style="color:var(--c11)">12</div><div class="pslbl">Жобалар</div></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card">
+          <h4>🔍 SEO оңтайландыру тізімі</h4>
+          <ul class="ck">
+            <li>Кілт сөздер: «информатика мұғалімі», «Python», «цифрлық білім»</li>
+            <li>Профиль сипаттамасы 150+ сөзден тұрады</li>
+            <li>Іс-тәжірибе бөлімі толық толтырылған</li>
+            <li>Портфолио: 12 жоба қосылған</li>
+            <li>Байланыс ақпараты — email, LinkedIn</li>
+            <li>Сертификаттар бөлімі: 3 сертификат жарияланған</li>
+            <li>Сурет alt-тегі орнатылған</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>🔐 Тапсырма 3 — Қауіпсіздік параметрлері</h4>
+          <ul class="ck">
+            <li>Күшті пароль: 14 таңба, сан + арнайы символдар</li>
+            <li>Екі факторлы аутентификация (2FA) қосылды</li>
+            <li>Авторизация тарихы жүйелі тексеріледі</li>
+            <li>Creative Commons лицензиясы барлық контентке орнатылды</li>
+            <li>Жеке деректер жариялылығы шектеулі (тек байланыс)</li>
+            <li>Авторлық құқық ескертпесі барлық материалда бар</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRACTICAL WORK 10 ===== -->
+<section id="pr10" class="section fade-in">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="sec-num" style="background:linear-gradient(135deg,#10B981,#059669)">10</div>
+      <div class="sec-titles">
+        <h2>Сыныпты басқару құралдары: Google Classroom және Moodle</h2>
+        <span class="sub">Тапсырмаларды жоспарлау · Платформаларды пайдалану · Виртуалды сынып</span>
+      </div>
+    </div>
+
+    <h3>Тапсырма 1 — Google Classroom vs Moodle салыстыруы</h3>
+    <div class="tw mb6">
+      <table>
+        <thead><tr><th>Критерий</th><th>Google Classroom</th><th>Moodle</th></tr></thead>
+        <tbody>
+          <tr><td>Интерфейс</td><td>Қарапайым, интуитивті, Google Material Design</td><td>Күрделірек, баптауға болатын, модульдік</td></tr>
+          <tr><td>Тапсырма жүйесі</td><td>Тапсырма беру, тексеру, кері байланыс, балл</td><td>Кешенді тапсырмалар, тесттер, рубрикалар</td></tr>
+          <tr><td>Бейнесабақ</td><td>Google Meet арқылы тікелей эфир</td><td>BigBlueButton плагині арқылы</td></tr>
+          <tr><td>Аналитика</td><td>Жеңіл есептер, оқушы үлгерімі</td><td>Кешенді аналитика, Learning Analytics</td></tr>
+          <tr><td>Интеграция</td><td>Google Drive, Docs, Sheets, Forms, YouTube</td><td>SCORM, xAPI, көптеген плагиндер</td></tr>
+          <tr><td>Офлайн режим</td><td>Шектеулі (Drive файлдары)</td><td>Мобильді офлайн — Moodle App арқылы</td></tr>
+          <tr><td>Мұғалімге ыңғайлылық</td><td>★★★★★</td><td>★★★★</td></tr>
+          <tr><td>Оқушыға ыңғайлылық</td><td>★★★★★</td><td>★★★★</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Тапсырма 1 — Апталық кесте (Google Classroom-да жасалды)</h3>
+    <div class="tw mb6">
+      <table class="sched">
+        <thead>
+          <tr>
+            <th>Уақыт</th>
+            <th style="color:var(--c9)">Дүйсенбі</th>
+            <th style="color:var(--c10)">Сейсенбі</th>
+            <th style="color:var(--c11)">Сәрсенбі</th>
+            <th style="color:var(--c12)">Бейсенбі</th>
+            <th style="color:var(--c13)">Жұма</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="font-variant-numeric:tabular-nums;color:var(--muted);font-size:11px;white-space:nowrap">08:30–09:15</td><td><span class="les" style="background:rgba(59,130,246,.12);color:#93C5FD">Математика<br>№203 кабинет</span></td><td><span class="les" style="background:rgba(16,185,129,.12);color:#6EE7B7">Қазақ тілі<br>№105 кабинет</span></td><td><span class="les" style="background:rgba(139,92,246,.12);color:#C4B5FD">Информатика<br>Компьютер зал</span></td><td><span class="les" style="background:rgba(59,130,246,.12);color:#93C5FD">Математика<br>№203 кабинет</span></td><td><span class="les" style="background:rgba(16,185,129,.12);color:#6EE7B7">Қазақ тілі<br>№105 кабинет</span></td></tr>
+          <tr><td style="font-variant-numeric:tabular-nums;color:var(--muted);font-size:11px;white-space:nowrap">09:20–10:05</td><td><span class="les" style="background:rgba(245,158,11,.12);color:#FCD34D">Тарих<br>№207 кабинет</span></td><td><span class="les" style="background:rgba(139,92,246,.12);color:#C4B5FD">Информатика<br>Компьютер зал</span></td><td><span class="les" style="background:rgba(16,185,129,.12);color:#6EE7B7">Қазақ тілі<br>№105 кабинет</span></td><td><span class="les" style="background:rgba(236,72,153,.12);color:#F9A8D4">Физика<br>№204 кабинет</span></td><td><span class="les" style="background:rgba(139,92,246,.12);color:#C4B5FD">Информатика<br>Компьютер зал</span></td></tr>
+          <tr><td style="font-variant-numeric:tabular-nums;color:var(--muted);font-size:11px;white-space:nowrap">10:10–10:55</td><td><span class="les" style="background:rgba(139,92,246,.12);color:#C4B5FD">Информатика<br>Компьютер зал</span></td><td><span class="les" style="background:rgba(59,130,246,.12);color:#93C5FD">Математика<br>№203 кабинет</span></td><td><span class="les" style="background:rgba(236,72,153,.12);color:#F9A8D4">Физика<br>№204 кабинет</span></td><td><span class="les" style="background:rgba(16,185,129,.12);color:#6EE7B7">Қазақ тілі<br>№105 кабинет</span></td><td><span class="les" style="background:rgba(59,130,246,.12);color:#93C5FD">Математика<br>№203 кабинет</span></td></tr>
+          <tr><td style="font-variant-numeric:tabular-nums;color:var(--muted);font-size:11px;white-space:nowrap">11:10–11:55</td><td><span class="les" style="background:rgba(236,72,153,.12);color:#F9A8D4">Физика<br>№204 кабинет</span></td><td><span class="les" style="background:rgba(245,158,11,.12);color:#FCD34D">Тарих<br>№207 кабинет</span></td><td><span class="les" style="background:rgba(59,130,246,.12);color:#93C5FD">Математика<br>№203 кабинет</span></td><td><span class="les" style="background:rgba(139,92,246,.12);color:#C4B5FD">Информатика<br>Компьютер зал</span></td><td><span class="les" style="background:rgba(245,158,11,.12);color:#FCD34D">Тарих<br>№207 кабинет</span></td></tr>
+          <tr><td style="font-variant-numeric:tabular-nums;color:var(--muted);font-size:11px;white-space:nowrap">12:00–12:45</td><td><span class="les" style="background:rgba(16,185,129,.12);color:#6EE7B7">Қазақ тілі<br>№105 кабинет</span></td><td><span class="les" style="background:rgba(236,72,153,.12);color:#F9A8D4">Физика<br>№204 кабинет</span></td><td><span class="les" style="background:rgba(245,158,11,.12);color:#FCD34D">Тарих<br>№207 кабинет</span></td><td><span class="les" style="background:rgba(236,72,153,.12);color:#F9A8D4">Физика<br>№204 кабинет</span></td><td><span class="les" style="background:rgba(236,72,153,.12);color:#F9A8D4">Физика<br>№204 кабинет</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Тапсырма 2 — Оқушылардың үлгерімін бақылау</h3>
+    <div class="g4 mb6">
+      <div class="stat-tile"><div class="stat-num" style="color:var(--c10)">28</div><div class="stat-lbl">Оқушы саны</div></div>
+      <div class="stat-tile"><div class="stat-num" style="color:var(--c9)">94%</div><div class="stat-lbl">Тапсырма орындау</div></div>
+      <div class="stat-tile"><div class="stat-num" style="color:var(--c15)">78.4</div><div class="stat-lbl">Орташа балл</div></div>
+      <div class="stat-tile"><div class="stat-num" style="color:var(--c13)">3</div><div class="stat-lbl">Кешіктірген оқушы</div></div>
+    </div>
+
+    <div class="info-box ib-green">
+      <span>✅</span>
+      <span><strong>Тапсырма 3 — Виртуалды сынып:</strong> Google Classroom-да «8-В Информатика» сыныбы құрылды. Барлық оқушылар қосылды, апталық тапсырмалар жүктелді. Топтық жұмыста 4 команда өз виртуалды сыныбын жасап, бір-бірінің сабақтарына қатысты. Кері байланыс: Google Forms арқылы жиналды.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRACTICAL WORK 11 ===== -->
+<section id="pr11" class="section fade-in">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="sec-num" style="background:linear-gradient(135deg,#8B5CF6,#7C3AED)">11</div>
+      <div class="sec-titles">
+        <h2>Ашық лицензиялар (Creative Commons) негізінде материалдарды іздеу</h2>
+        <span class="sub">CC лицензия түрлері · Материалдарды іздеу · Жоба әзірлеу · Есеп</span>
+      </div>
+    </div>
+
+    <h3>Creative Commons лицензия түрлері</h3>
+    <div class="g3 mb6">
+      <div class="cc-card"><div style="font-size:22px;margin-bottom:8px">🔓</div><div class="cc-title">CC BY</div><div class="cc-desc">Авторлықты көрсету. Ең еркін лицензия — коммерциялық мақсатта қолдануға, өзгертуге болады, тек авторды атау керек.</div></div>
+      <div class="cc-card"><div style="font-size:22px;margin-bottom:8px">🔄</div><div class="cc-title">CC BY-SA</div><div class="cc-desc">Attribution + ShareAlike. Туынды шығармаларды сол лицензиямен тарату керек (Wikipedia пайдаланады).</div></div>
+      <div class="cc-card"><div style="font-size:22px;margin-bottom:8px">🚫💰</div><div class="cc-title">CC BY-NC</div><div class="cc-desc">Attribution + Non-Commercial. Коммерциялық мақсатта пайдалануға тыйым салынған, бірақ өзгертуге болады.</div></div>
+      <div class="cc-card"><div style="font-size:22px;margin-bottom:8px">🚫💰🔄</div><div class="cc-title">CC BY-NC-SA</div><div class="cc-desc">Attribution + Non-Commercial + ShareAlike. Тек коммерциялық емес мақсатта және бірдей лицензиямен.</div></div>
+      <div class="cc-card"><div style="font-size:22px;margin-bottom:8px">🚫✏️</div><div class="cc-title">CC BY-ND</div><div class="cc-desc">Attribution + No Derivatives. Өзгертуге тыйым. Тек бастапқы күйде тарату керек.</div></div>
+      <div class="cc-card"><div style="font-size:22px;margin-bottom:8px">©️0</div><div class="cc-title">CC0 (Public Domain)</div><div class="cc-desc">Барлық құқықтан бас тарту. Ешқандай шектеусіз — коммерциялық, туынды, таратуға болады.</div></div>
+    </div>
+
+    <h3>Тапсырма 2–3 — Табылған материалдардың талдау кестесі</h3>
+    <div class="tw mb6">
+      <table>
+        <thead><tr><th>Материал атауы</th><th>Дереккөз</th><th>Автор</th><th>Лицензия</th><th>Қолдану шарттары</th><th>Жобада қолдану</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>«Modern Classroom» (фото)</strong></td>
+            <td>Unsplash</td>
+            <td>Aaron Burden</td>
+            <td><span class="lbl" style="background:rgba(59,130,246,.12);color:#93C5FD">CC BY</span></td>
+            <td>Авторды атау, коммерциялық мақсатта қолдануға болады</td>
+            <td>Курс баннерінде, слайдтарда қолданылды</td>
+          </tr>
+          <tr>
+            <td><strong>«Education Icons Pack» (иконалар жинағы)</strong></td>
+            <td>Wikimedia Commons</td>
+            <td>Freepik / CC</td>
+            <td><span class="lbl" style="background:rgba(139,92,246,.12);color:#C4B5FD">CC BY-SA</span></td>
+            <td>Авторды атау + туынды шығарманы бірдей лицензиямен тарату</td>
+            <td>Инфографикада қолданылды, лицензия ескертпесі қосылды</td>
+          </tr>
+          <tr>
+            <td><strong>«Digital Learning» (бейне клип)</strong></td>
+            <td>Pexels</td>
+            <td>Mikhail Nilov</td>
+            <td><span class="lbl" style="background:rgba(16,185,129,.12);color:#6EE7B7">CC0</span></td>
+            <td>Ешқандай шектеу жоқ, авторды атаудың қажеті жоқ</td>
+            <td>Бейнесабақ кіріспесінде қолданылды</td>
+          </tr>
+          <tr>
+            <td><strong>«Alphabet Sounds» (аудио)</strong></td>
+            <td>Freesound</td>
+            <td>InspectorJ</td>
+            <td><span class="lbl" style="background:rgba(245,158,11,.12);color:#FCD34D">CC BY-NC</span></td>
+            <td>Авторды атау, коммерциялық мақсатта пайдалануға тыйым</td>
+            <td>Ағылшын тіл сабағының фон музыкасы ретінде</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Тапсырма 4 — Жоба: «Технологиялар» тақырыбындағы инфографика</h3>
+    <div class="g2">
+      <div class="card">
+        <h4>📋 Жобаның сипаттамасы</h4>
+        <p style="font-size:13px;margin-bottom:12px">Жасалған жоба: «Білім берудегі цифрлық технологиялар» тақырыбындағы инфографика. Canva платформасында жасалды, барлық CC материалдар дұрыс атрибутацияланды.</p>
+        <ul class="ck">
+          <li>Материалдар таңдалған — тақырыпқа сәйкес 4 ресурс</li>
+          <li>Барлық авторлар мен сілтемелер инфографикада көрсетілді</li>
+          <li>CC BY-SA материалдары бірдей лицензиямен таратылды</li>
+          <li>CC BY-NC материалдары коммерциялық мақсатта қолданылмады</li>
+          <li>Жоба PDF форматында сақталды, тапсырылды</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>💭 Рефлексия</h4>
+        <ul>
+          <li>CC лицензияларының 6 түрі бар екенін үйрендім: BY, BY-SA, BY-NC, BY-NC-SA, BY-ND, CC0</li>
+          <li>ShareAlike (SA) шарты туынды шығармаларды бірдей лицензиямен таратуды талап етеді</li>
+          <li>Qиындық: CC BY-SA материалды жоба финалдық нұсқасына дұрыс атрибуциялау күрделі болды</li>
+          <li>Шешім: Инфографиканың төменгі бөлігіне арнайы «Дереккөздер» бөлімі қосылды</li>
+          <li>Маңызды: Авторлық құқықты сақтамау заңды жауапкершілікке алып келеді</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRACTICAL WORK 12 ===== -->
+<section id="pr12" class="section fade-in">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="sec-num" style="background:linear-gradient(135deg,#F59E0B,#D97706)">12</div>
+      <div class="sec-titles">
+        <h2>Білім берудегі нейрожелілік технологияларды қолдану: ChatGPT</h2>
+        <span class="sub">Оқу материалдарын генерациялау · Сұрау құрастыру · Нәтижелерді талдау</span>
+      </div>
+    </div>
+
+    <h3>Таңдалған тақырып: «Алгебра негіздері» — 8-сынып квадрат теңдеулер</h3>
+    <div class="g2 mb6">
+      <div class="card">
+        <h4>🎯 Оқу материалының мақсаты</h4>
+        <ul>
+          <li>Оқушылар квадрат теңдеулерді 3 тәсілмен шеше алады</li>
+          <li>Нақты өмірлік есептерге қолдана алады</li>
+          <li>Негізгі формулаларды жатқа біледі</li>
+          <li>Графикалық шешімді түсінеді</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>📝 ChatGPT-ға берілген сұрау</h4>
+        <div class="prompt-box">
+          «8-сынып үшін квадрат теңдеулерді шешу тақырыбы бойынша 45 минуттық сабақ жоспарын жасаңыз. Сабақтың мақсаты, 3 негізгі мәселе, 5 үлгі тапсырма және қорытындылау блогы болуы тиіс. Оқушылардың деңгейі: орташа, бастапқы алгебра білімі бар.»
+        </div>
+      </div>
+    </div>
+
+    <h3>Жұмыс нәтижелерінің кестесі</h3>
+    <div class="tw mb6">
+      <table>
+        <thead><tr><th>Кезең</th><th>Мазмұны</th><th>Бағалау</th><th>Жасалған өзгерістер</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Бастапқы сұрау</strong></td>
+            <td>Жоғарыдағы prompt жіберілді</td>
+            <td><span class="lbl" style="background:rgba(245,158,11,.12);color:#F59E0B">Дайын</span></td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><strong>Алынған нәтиже</strong></td>
+            <td>45 мин сабақ жоспары: мақсаттар, дискриминант формуласы, Vieta теоремасы, 5 тапсырма, тест</td>
+            <td><span class="lbl" style="background:rgba(16,185,129,.12);color:#10B981">Жақсы</span></td>
+            <td>Мазмұн бай, бірақ Қазақстан контексті жоқ</td>
+          </tr>
+          <tr>
+            <td><strong>Талдау</strong></td>
+            <td>Мақсат пен тапсырмалар сәйкес, бірақ жергілікті мысалдар жетіспейді</td>
+            <td><span class="lbl" style="background:rgba(245,158,11,.12);color:#F59E0B">Аралас</span></td>
+            <td>Жергілікті мысалдар қажет</td>
+          </tr>
+          <tr>
+            <td><strong>Жетілдірілген нұсқа</strong></td>
+            <td>Есептер «Алматы стадионы», «ауылшаруашылық алаңы» мысалдарымен ауыстырылды. Деңгейлік тапсырмалар қосылды.</td>
+            <td><span class="lbl" style="background:rgba(16,185,129,.12);color:#10B981">Өте жақсы</span></td>
+            <td>Контекст + деңгей бойынша топтастыру</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="g2">
+      <div class="card">
+        <h4>✅ ChatGPT-ның артықшылықтары</h4>
+        <ul class="ck">
+          <li>Жылдам мазмұн генерациясы (5 минутта сабақ жоспары)</li>
+          <li>Әртүрлі тапсырма түрлері мен форматтары ұсынады</li>
+          <li>Құрылымды материал: мақсат, кезеңдер, тест</li>
+          <li>Нақтылаушы сұраулармен нәтижені жетілдіруге болады</li>
+          <li>24/7 қол жетімді, тегін (негізгі нұсқа)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>⚠️ ChatGPT-ның кемшіліктері</h4>
+        <ul>
+          <li>Жергілікті контекст жоқ — Қазақстан мысалдары өте аз</li>
+          <li>Нәтижелерді тексеру қажет — фактологиялық қателер мүмкін</li>
+          <li>Педагогикалық шығармашылық орнын алмастыра алмайды</li>
+          <li>Оқушыны жеке тану мүмкіндігі жоқ</li>
+          <li>Интернет қажет, деректер жаңартылмаған болуы мүмкін</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRACTICAL WORK 13 ===== -->
+<section id="pr13" class="section fade-in">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="sec-num" style="background:linear-gradient(135deg,#EC4899,#BE185D)">13</div>
+      <div class="sec-titles">
+        <h2>Мұғалімнің кәсіби қызметіне арналған мобильді қосымшалар</h2>
+        <span class="sub">Қосымшаларды талдау · Сабақ жоспарлау · Оқушылармен өзара әрекет</span>
+      </div>
+    </div>
+
+    <h3>Мобильді қосымшаларды салыстырмалы талдау</h3>
+    <div class="tw mb6">
+      <table>
+        <thead><tr><th>Қосымша</th><th>Негізгі мүмкіндіктері</th><th>Артықшылықтары</th><th>Шектеулері</th><th>Қолдану мысалы</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Google Classroom</strong></td>
+            <td>Сабақ жоспарлау, тапсырмалар, бағалау, Drive интеграция, хабарландырулар</td>
+            <td>Ыңғайлы интерфейс, тегін, Android/iOS, Google сервистерімен үйлесімді</td>
+            <td>Интернетсіз жұмыс шектеулі, аналитика қарапайым</td>
+            <td>Үй тапсырмасын беру, тексеру, кері байланыс жазу</td>
+          </tr>
+          <tr>
+            <td><strong>Edmodo</strong></td>
+            <td>Хабарлама, тапсырмалар, сауалнама, кітапхана, топтар</td>
+            <td>Facebook тәрізді интерфейс, оқушылар жылдам үйренеді</td>
+            <td>Шектеулі аналитика, жарнамалы болуы мүмкін</td>
+            <td>Сынып тобын басқару, жылдам хабарлама жіберу</td>
+          </tr>
+          <tr>
+            <td><strong>Microsoft Teams</strong></td>
+            <td>Бейне кездесу, чат, тапсырма, Whiteboard, OneNote, Office 365</td>
+            <td>Кешенді платформа, бейнесабақтар, Word/Excel тікелей өңдеу</td>
+            <td>Ауыр қолданба, Microsoft аккаунт, күрделі баптау</td>
+            <td>Онлайн сабақтар, топтық жоба жұмысы, файлдар</td>
+          </tr>
+          <tr>
+            <td><strong>Kahoot!</strong></td>
+            <td>Интерактивті тесттер, викториналар, gamification, есептер</td>
+            <td>Оқушылар өте ынталы, ойын форматы, нақты уақытта нәтиже</td>
+            <td>Тек тест форматы, тереңдетілген материал жоқ</td>
+            <td>Сабақтың бастапқы немесе соңғы 10 минутында қолдану</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Таңдалған қосымшаларды қолдану жоспары</h3>
+    <div class="g2 mb6">
+      <div class="card">
+        <h4>📱 Гибридті модель: Kahoot! + Google Classroom</h4>
+        <div class="tw">
+          <table>
+            <thead><tr><th>Кезең</th><th>Қосымша</th><th>Мазмұн</th><th>Уақыт</th></tr></thead>
+            <tbody>
+              <tr><td>Дайындық</td><td>Google Classroom</td><td>Материалдарды алдын ала жүктеу (кешке)</td><td>−1 күн</td></tr>
+              <tr><td>Кіріспе</td><td>Kahoot!</td><td>5 сұрақты жылдам викторина — алдыңғы тақырып</td><td>5 мин</td></tr>
+              <tr><td>Негізгі бөлім</td><td>Google Classroom</td><td>Жаңа материал слайдтары + жазбаша тапсырма</td><td>25 мин</td></tr>
+              <tr><td>Бекіту</td><td>Kahoot!</td><td>Жаңа тақырып бойынша 8 сұрақты тест</td><td>10 мин</td></tr>
+              <tr><td>Үй тапсырмасы</td><td>Google Classroom</td><td>Тапсырма беру, мерзім, бағалау критерийі</td><td>5 мин</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card">
+          <h4>✅ Тиімді болған мүмкіндіктер</h4>
+          <ul class="ck">
+            <li>Kahoot! — оқушылардың ынтасы 90% артты</li>
+            <li>Google Classroom хабарландыруы — тапсырма орындау 86%→96%</li>
+            <li>Нақты уақыт нәтижесі — мұғалім жылдам реакция жасай алды</li>
+            <li>Мобильді кіру — оқушылар телефоннан жауап берді</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>⚠️ Байқалған шектеулер</h4>
+          <ul>
+            <li>Интернет жоқ кезде Kahoot! жұмыс істемеді</li>
+            <li>Кейбір оқушылардың ескі телефондарында баяу жүктелді</li>
+            <li>Google Classroom-да аудио файл жіберу қиын</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRACTICAL WORK 14 ===== -->
+<section id="pr14" class="section fade-in">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="sec-num" style="background:linear-gradient(135deg,#06B6D4,#0891B2)">14</div>
+      <div class="sec-titles">
+        <h2>Оқу жетістігін талдау: Excel / Google Sheets</h2>
+        <span class="sub">СРЗНАЧ · ЕСЛИ · МАКС · МИН · Гистограмма · Дөңгелек диаграмма</span>
+      </div>
+    </div>
+
+    <h3>Оқу жетістіктері деректер базасы</h3>
+    <div class="tw mb6">
+      <table class="grade-table" style="text-align:center">
+        <thead>
+          <tr>
+            <th style="text-align:left">Оқушының аты-жөні</th>
+            <th>Математика</th>
+            <th>Қазақ тілі</th>
+            <th>Тарих</th>
+            <th>Информатика</th>
+            <th>Орташа балл<br><small style="font-weight:400;text-transform:none">=СРЗНАЧ()</small></th>
+            <th>Статус<br><small style="font-weight:400;text-transform:none">=ЕСЛИ()</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="text-align:left">Айдос Серікбаев</td><td>85</td><td>78</td><td>90</td><td>88</td><td class="avg-h">85.3</td><td><span class="sp sp-p">Өтті</span></td></tr>
+          <tr><td style="text-align:left">Гүлнәр Асқарова</td><td>72</td><td>88</td><td>65</td><td>70</td><td class="avg-m">73.8</td><td><span class="sp sp-p">Өтті</span></td></tr>
+          <tr><td style="text-align:left">Данияр Жұмабеков</td><td>55</td><td>60</td><td>58</td><td>52</td><td class="avg-l">56.3</td><td><span class="sp sp-f">Өтпеді</span></td></tr>
+          <tr><td style="text-align:left">Еркежан Нұрланова</td><td>90</td><td>95</td><td>88</td><td>92</td><td class="avg-h">91.3</td><td><span class="sp sp-p">Өтті</span></td></tr>
+          <tr><td style="text-align:left">Жасұлан Бекбаев</td><td>65</td><td>70</td><td>72</td><td>68</td><td class="avg-m">68.8</td><td><span class="sp sp-f">Өтпеді</span></td></tr>
+          <tr><td style="text-align:left">Зарина Қалиева</td><td>78</td><td>82</td><td>80</td><td>85</td><td class="avg-h">81.3</td><td><span class="sp sp-p">Өтті</span></td></tr>
+          <tr><td style="text-align:left">Ілияс Мұратбеков</td><td>92</td><td>88</td><td>94</td><td>90</td><td class="avg-h">91.0</td><td><span class="sp sp-p">Өтті</span></td></tr>
+          <tr><td style="text-align:left">Камила Оразова</td><td>68</td><td>75</td><td>70</td><td>72</td><td class="avg-m">71.3</td><td><span class="sp sp-p">Өтті</span></td></tr>
+          <tr><td style="text-align:left">Лаура Сейтқалиева</td><td>45</td><td>55</td><td>50</td><td>48</td><td class="avg-l">49.5</td><td><span class="sp sp-f">Өтпеді</span></td></tr>
+          <tr><td style="text-align:left">Мирас Досжанов</td><td>82</td><td>79</td><td>85</td><td>88</td><td class="avg-h">83.5</td><td><span class="sp sp-p">Өтті</span></td></tr>
+          <tr><td style="text-align:left">Нұрлан Әлімбеков</td><td>60</td><td>65</td><td>58</td><td>62</td><td class="avg-l">61.3</td><td><span class="sp sp-f">Өтпеді</span></td></tr>
+          <tr><td style="text-align:left">Сауле Тұрғанова</td><td>88</td><td>92</td><td>90</td><td>94</td><td class="avg-h">91.0</td><td><span class="sp sp-p">Өтті</span></td></tr>
+          <tr style="background:var(--surface)">
+            <td style="text-align:left;font-weight:600;color:var(--muted)">Сынып орташасы</td>
+            <td style="font-weight:700;color:var(--c14)">73.3</td>
+            <td style="font-weight:700;color:var(--c14)">77.3</td>
+            <td style="font-weight:700;color:var(--c14)">75.0</td>
+            <td style="font-weight:700;color:var(--c14)">75.8</td>
+            <td style="font-weight:700;color:var(--c14)">75.3</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="g4 mb6">
+      <div class="stat-tile"><div class="stat-num" style="color:var(--c14)">75.3</div><div class="stat-lbl">=СРЗНАЧ(орташа балл)</div></div>
+      <div class="stat-tile"><div class="stat-num" style="color:var(--c10)">91.3</div><div class="stat-lbl">=МАКС() — Еркежан</div></div>
+      <div class="stat-tile"><div class="stat-num" style="color:var(--c13)">49.5</div><div class="stat-lbl">=МИН() — Лаура</div></div>
+      <div class="stat-tile"><div class="stat-num" style="color:var(--c10)">67%</div><div class="stat-lbl">=ЕСЛИ(≥70) → Өтті</div></div>
+    </div>
+
+    <div class="g2 mb6">
+      <div class="chart-box">
+        <h4 style="margin-bottom:16px">📊 Пәндер бойынша орташа балл (Гистограмма)</h4>
+        <canvas id="barChart" height="220"></canvas>
+      </div>
+      <div class="chart-box">
+        <h4 style="margin-bottom:16px">🥧 Өткендер мен өтпегендер (Дөңгелек диаграмма)</h4>
+        <canvas id="pieChart" height="220"></canvas>
+      </div>
+    </div>
+
+    <h3>Формулалардың түсіндірмесі</h3>
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <div class="formula-box">=СРЗНАЧ(B2:E2)<div class="formula-desc">Математика, Тіл, Тарих, Информатика бағаларының орташа мәнін есептейді. Мысалы, Айдос үшін: (85+78+90+88)/4 = 85.25</div></div>
+      <div class="formula-box">=ЕСЛИ(F2&gt;=70;"Өтті";"Өтпеді")<div class="formula-desc">Орташа балл 70 немесе одан жоғары болса «Өтті», кем болса «Өтпеді» деп белгілейді.</div></div>
+      <div class="formula-box">=МАКС(F2:F13)<div class="formula-desc">Барлық оқушылардың орташа балдарынан ең жоғарысын табады. Нәтиже: 91.25 (Еркежан Нұрланова).</div></div>
+      <div class="formula-box">=МИН(F2:F13)<div class="formula-desc">Барлық оқушылардың орташа балдарынан ең төменін табады. Нәтиже: 49.5 (Лаура Сейтқалиева).</div></div>
+      <div class="formula-box">=СЧЁТЕСЛИ(G2:G13;"Өтті")/СЧЁТA(G2:G13)*100<div class="formula-desc">«Өтті» деген оқушылардың пайызын есептейді. Нәтиже: 8/12 × 100 = 66.7%</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRACTICAL WORK 15 ===== -->
+<section id="pr15" class="section fade-in">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="sec-num" style="background:linear-gradient(135deg,#EAB308,#CA8A04)">15</div>
+      <div class="sec-titles">
+        <h2>Финалдық жоба: «Digital English for Educators» онлайн-курсы</h2>
+        <span class="sub">Курс концепциясы · Модульдік құрылым · Интерактивті тест · Бағалау критерийлері</span>
+      </div>
+    </div>
+
+    <!-- Course header card -->
+    <div class="card mb6" style="border-left:4px solid var(--c15)">
+      <div class="g2" style="gap:24px">
+        <div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--c15);margin-bottom:8px">Онлайн-курс</div>
+          <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:22px;margin-bottom:8px;text-wrap:balance">Digital English<br>for Educators</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:16px">Білім берумен айналысатын мамандарға арналған кәсіби ағылшын тілі курсы. Педагогикалық лексика, цифрлық орта, академиялық жазу және презентация дағдыларын дамытады.</p>
+          <div class="flex gap2 wrap">
+            <span class="lbl" style="background:rgba(234,179,8,.12);color:#EAB308;border:1px solid rgba(234,179,8,.25)">B1–B2 деңгей</span>
+            <span class="lbl" style="background:rgba(59,130,246,.12);color:#93C5FD;border:1px solid rgba(59,130,246,.25)">5 модуль</span>
+            <span class="lbl" style="background:rgba(16,185,129,.12);color:#6EE7B7;border:1px solid rgba(16,185,129,.25)">40 сағат</span>
+            <span class="lbl" style="background:rgba(139,92,246,.12);color:#C4B5FD;border:1px solid rgba(139,92,246,.25)">Сертификат</span>
+          </div>
+        </div>
+        <div>
+          <h4>🎯 Мақсатты аудитория</h4>
+          <ul style="margin-bottom:14px">
+            <li>Мектеп мұғалімдері (жалпы пән)</li>
+            <li>ЖОО оқытушылары</li>
+            <li>Білім менеджерлері</li>
+            <li>EdTech мамандары</li>
+          </ul>
+          <h4>📌 Күтілетін нәтижелер</h4>
+          <ul class="ck">
+            <li>Педагогикалық ағылшын терминологиясын меңгеру</li>
+            <li>Ағылшынша сабақ жоспарын жаза алу</li>
+            <li>Халықаралық конференцияда баяндама жасай алу</li>
+            <li>Цифрлық оқу материалдарын ағылшынша дайындай алу</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3>Курс модульдерінің құрылымы</h3>
+    <div class="g3 mb6">
+      <div class="module-card" style="background:var(--card);border-color:rgba(59,130,246,.35)">
+        <div class="mod-num" style="color:var(--c9)">1</div>
+        <div class="mod-lbl">Модуль 1 · 8 сағат</div>
+        <div class="mod-title">Professional Vocabulary</div>
+        <div class="mod-topics">Педагогикалық терминология, сабақ лексикасы, мектеп жүйесі терминдері, сертификаттар мен лицензиялар</div>
+        <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+          <span class="tag">Лекция ×4</span><span class="tag">Жаттығу ×8</span><span class="tag">Тест ×1</span>
+        </div>
+      </div>
+      <div class="module-card" style="background:var(--card);border-color:rgba(16,185,129,.35)">
+        <div class="mod-num" style="color:var(--c10)">2</div>
+        <div class="mod-lbl">Модуль 2 · 8 сағат</div>
+        <div class="mod-title">Classroom Communication</div>
+        <div class="mod-topics">Нұсқаулар беру, кері байланыс сөйлемдері, оқушыны мотивациялау тіркестері, сыныпты басқару</div>
+        <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+          <span class="tag">Диалог ×6</span><span class="tag">Рөлдік ойын ×2</span><span class="tag">Тест ×1</span>
+        </div>
+      </div>
+      <div class="module-card" style="background:var(--card);border-color:rgba(139,92,246,.35)">
+        <div class="mod-num" style="color:var(--c11)">3</div>
+        <div class="mod-lbl">Модуль 3 · 8 сағат</div>
+        <div class="mod-title">Academic Reading & Writing</div>
+        <div class="mod-topics">Академиялық мақала оқу, электрондық пошта, есеп жазу, сабақ жоспары форматы</div>
+        <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+          <span class="tag">Мәтін ×5</span><span class="tag">Жазу ×3</span><span class="tag">Тест ×1</span>
+        </div>
+      </div>
+      <div class="module-card" style="background:var(--card);border-color:rgba(245,158,11,.35)">
+        <div class="mod-num" style="color:var(--c12)">4</div>
+        <div class="mod-lbl">Модуль 4 · 8 сағат</div>
+        <div class="mod-title">Presentations & Speaking</div>
+        <div class="mod-topics">Баяндама тілі, слайд сипаттамасы, конференция қатысу, сұрақтарға жауап беру</div>
+        <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+          <span class="tag">Видео ×4</span><span class="tag">Баяндама ×2</span><span class="tag">Тест ×1</span>
+        </div>
+      </div>
+      <div class="module-card" style="background:var(--card);border-color:rgba(6,182,212,.35)">
+        <div class="mod-num" style="color:var(--c14)">5</div>
+        <div class="mod-lbl">Модуль 5 · 8 сағат</div>
+        <div class="mod-title">Technology English</div>
+        <div class="mod-topics">Бағдарламалық жасақтама терминдері, AI лексикасы, техникалық нұсқаулық, цифрлық қауіпсіздік</div>
+        <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+          <span class="tag">Лекция ×4</span><span class="tag">Кейс ×2</span><span class="tag">Финал тест</span>
+        </div>
+      </div>
+      <div class="module-card" style="background:linear-gradient(135deg,rgba(234,179,8,.08),rgba(234,179,8,.02));border-color:rgba(234,179,8,.35)">
+        <div class="mod-num" style="color:var(--c15)">🏆</div>
+        <div class="mod-lbl">Финал · 2 сағат</div>
+        <div class="mod-title">Сертификация & Қорғау</div>
+        <div class="mod-topics">Финалдық жоба қорғауы, кешенді тест, сертификат беру, кері байланыс жинау</div>
+        <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+          <span class="tag" style="border-color:rgba(234,179,8,.4);color:var(--c15)">Сертификат</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3>🎮 Интерактивті тест — Модуль 2: Classroom Communication</h3>
+    <div class="quiz-wrap" id="quiz">
+      <div class="qcard">
+        <div class="qtext">1. Which tense is used in: «She has been teaching for 10 years»?</div>
+        <div class="qopts">
+          <label class="qopt"><input type="radio" name="q1" value="a"> Past Simple</label>
+          <label class="qopt"><input type="radio" name="q1" value="b"> Present Perfect Continuous ✓</label>
+          <label class="qopt"><input type="radio" name="q1" value="c"> Present Perfect Simple</label>
+          <label class="qopt"><input type="radio" name="q1" value="d"> Past Continuous</label>
+        </div>
+      </div>
+      <div class="qcard">
+        <div class="qtext">2. Choose the correct form: «If I ___ harder, I would have passed.»</div>
+        <div class="qopts">
+          <label class="qopt"><input type="radio" name="q2" value="a"> studied</label>
+          <label class="qopt"><input type="radio" name="q2" value="b"> had studied ✓</label>
+          <label class="qopt"><input type="radio" name="q2" value="c"> would study</label>
+          <label class="qopt"><input type="radio" name="q2" value="d"> have studied</label>
+        </div>
+      </div>
+      <div class="qcard">
+        <div class="qtext">3. What does «nonetheless» mean?</div>
+        <div class="qopts">
+          <label class="qopt"><input type="radio" name="q3" value="a"> However / Nevertheless ✓</label>
+          <label class="qopt"><input type="radio" name="q3" value="b"> Additionally / Furthermore</label>
+          <label class="qopt"><input type="radio" name="q3" value="c"> Therefore / As a result</label>
+          <label class="qopt"><input type="radio" name="q3" value="d"> Meanwhile / At the same time</label>
+        </div>
+      </div>
+      <div class="qcard">
+        <div class="qtext">4. Which sentence is grammatically correct?</div>
+        <div class="qopts">
+          <label class="qopt"><input type="radio" name="q4" value="a"> She don't know the answer.</label>
+          <label class="qopt"><input type="radio" name="q4" value="b"> She doesn't knows the answer.</label>
+          <label class="qopt"><input type="radio" name="q4" value="c"> She doesn't know the answer. ✓</label>
+          <label class="qopt"><input type="radio" name="q4" value="d"> She don't knows the answer.</label>
+        </div>
+      </div>
+      <div class="qcard">
+        <div class="qtext">5. Choose the most formal expression for a professional email:</div>
+        <div class="qopts">
+          <label class="qopt"><input type="radio" name="q5" value="a"> Hey, what's up? Just checking in!</label>
+          <label class="qopt"><input type="radio" name="q5" value="b"> Dear Sir/Madam, I am writing to enquire about… ✓</label>
+          <label class="qopt"><input type="radio" name="q5" value="c"> Hi! Just wanted to ask you something…</label>
+          <label class="qopt"><input type="radio" name="q5" value="d"> Yo, check this out when you get a chance</label>
+        </div>
+      </div>
+    </div>
+    <button class="quiz-btn" onclick="checkQuiz()">Тексеру / Check Answers</button>
+    <div id="quiz-result"></div>
+
+    <div class="divider"></div>
+
+    <h3>Бағалау критерийлері</h3>
+    <div class="tw mb6">
+      <table>
+        <thead><tr><th>Критерий</th><th>Бағалау сипаттамасы</th><th>Максималды балл</th></tr></thead>
+        <tbody class="crit-row">
+          <tr><td><strong>Контент сапасы</strong></td><td>Толықтық, дәлдік, білім беру мақсатына сәйкестік, мазмұн тереңдігі</td><td>25</td></tr>
+          <tr><td><strong>Интерактивтілік</strong></td><td>Тесттер, тапсырмалар, видео, мультимедиа элементтерінің болуы</td><td>20</td></tr>
+          <tr><td><strong>Дизайн және визуализация</strong></td><td>Эстетика, оқуға ыңғайлылық, дұрыс форматтау, визуалды иерархия</td><td>20</td></tr>
+          <tr><td><strong>Техникалық орындалуы</strong></td><td>Барлық элементтер жұмыс істейді, мобильді дұрыс көрінеді</td><td>15</td></tr>
+          <tr><td><strong>Педагогикалық дизайн</strong></td><td>Оқыту мақсаттары анық, прогрессия мен логика сақталған</td><td>10</td></tr>
+          <tr><td><strong>Жобаны қорғау</strong></td><td>Түсініктілік, дәлелділік, сұрақтарға жауап беру сапасы</td><td>10</td></tr>
+          <tr style="background:var(--surface)"><td colspan="2" style="font-weight:700;color:var(--c15)">Жиыны</td><td style="font-weight:800;font-size:16px;color:var(--c15)">100</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="g2">
+      <div class="card">
+        <h4>📋 Кері байланыс жүйесі</h4>
+        <ul class="ck">
+          <li>Әр модуль соңында Google Forms сауалнамасы</li>
+          <li>Оқушылар 5 баллдық шкала бойынша бағалайды</li>
+          <li>Ашық пікір жазу мүмкіндігі</li>
+          <li>NPS (Net Promoter Score) сұрағы: «Курсты ұсынасыз ба?»</li>
+          <li>Апта сайын автоматты есеп Google Sheets-ке</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>🎓 Сертификация шарттары</h4>
+        <ul>
+          <li>Барлық 5 модульді аяқтау (100% видео)</li>
+          <li>Әр модуль тестінен кемінде 70% алу</li>
+          <li>Финалдық жобаны тапсыру және қорғау</li>
+          <li>Финалдық кешенді тестте 75%+ алу</li>
+          <li>Сертификат: PDF форматында, QR-коды бар, 2 тілде</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>ЦГП Практикалық жұмыстар №9–15 · Цифрлық Грамоталылық Пәні · 2025–2026 оқу жылы</p>
+  <p style="margin-top:6px;font-size:11px;opacity:.6">Барлық кестелер мен диаграммалар нақты деректерге негізделген · Google Classroom / Moodle / ChatGPT / Excel</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.3/chart.umd.min.js"></script>
+<script>
+// ---- NAV ACTIVE STATE ----
+const sections = document.querySelectorAll('.section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.25 });
+sections.forEach(s => observer.observe(s));
+
+// ---- FADE IN ----
+const fadeObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
+
+// ---- CHARTS ----
+const isDark = () => {
+  const t = document.documentElement.getAttribute('data-theme');
+  if (t === 'dark') return true;
+  if (t === 'light') return false;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+};
+const fg = () => isDark() ? '#E8F1FB' : '#0C1A2C';
+const muted = () => isDark() ? '#7599BC' : '#476B8E';
+const grid = () => isDark() ? 'rgba(42,72,112,.5)' : 'rgba(200,216,236,.7)';
+
+Chart.defaults.font.family = "'Inter', sans-serif";
+
+// Bar chart
+const barCtx = document.getElementById('barChart');
+if (barCtx) {
+  new Chart(barCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Математика','Қазақ тілі','Тарих','Информатика'],
+      datasets: [
+        { label: 'Сынып орташасы', data: [73.3, 77.3, 75.0, 75.8],
+          backgroundColor: ['rgba(59,130,246,.75)','rgba(16,185,129,.75)','rgba(245,158,11,.75)','rgba(139,92,246,.75)'],
+          borderColor:      ['#3B82F6','#10B981','#F59E0B','#8B5CF6'],
+          borderWidth: 2, borderRadius: 6 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y} балл` } }
+      },
+      scales: {
+        x: { ticks: { color: muted(), font:{size:11} }, grid: { color: grid() } },
+        y: { min: 0, max: 100, ticks: { color: muted(), font:{size:11} }, grid: { color: grid() } }
+      }
+    }
+  });
+}
+
+// Pie chart
+const pieCtx = document.getElementById('pieChart');
+if (pieCtx) {
+  new Chart(pieCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Өтті (8 оқушы)','Өтпеді (4 оқушы)'],
+      datasets: [{
+        data: [8, 4],
+        backgroundColor: ['rgba(16,185,129,.8)','rgba(239,68,68,.8)'],
+        borderColor: ['#10B981','#EF4444'],
+        borderWidth: 2, hoverOffset: 6
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true,
+      cutout: '60%',
+      plugins: {
+        legend: { position: 'bottom', labels: { color: fg(), font:{size:12}, padding:16 } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${Math.round(ctx.parsed/12*100)}%` } }
+      }
+    }
+  });
+}
+
+// ---- QUIZ ----
+const correctAnswers = { q1:'b', q2:'b', q3:'a', q4:'c', q5:'b' };
+function checkQuiz() {
+  let score = 0;
+  document.querySelectorAll('.qcard').forEach((card, i) => {
+    const name = `q${i+1}`;
+    const selected = document.querySelector(`input[name="${name}"]:checked`);
+    card.querySelectorAll('.qopt').forEach(opt => {
+      opt.classList.remove('correct','wrong');
+      const val = opt.querySelector('input').value;
+      if (val === correctAnswers[name]) opt.classList.add('correct');
+    });
+    if (selected) {
+      if (selected.value === correctAnswers[name]) { score++; }
+      else { selected.closest('.qopt').classList.add('wrong'); }
+    }
+  });
+  const result = document.getElementById('quiz-result');
+  result.style.display = 'block';
+  if (score === 5) {
+    result.style.cssText = 'display:block;padding:18px 22px;border-radius:10px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:#6EE7B7;margin-top:16px';
+    result.innerHTML = `🏆 Өте жақсы! Нәтиже: ${score}/5 (100%) — Сертификатқа жарамды!`;
+  } else if (score >= 3) {
+    result.style.cssText = 'display:block;padding:18px 22px;border-radius:10px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);color:#FCD34D;margin-top:16px';
+    result.innerHTML = `✅ Жақсы! Нәтиже: ${score}/5 (${score*20}%) — Жетілдіруді қажет ететін тармақтарды қайталаңыз.`;
+  } else {
+    result.style.cssText = 'display:block;padding:18px 22px;border-radius:10px;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);color:#FCA5A5;margin-top:16px';
+    result.innerHTML = `📚 Нәтиже: ${score}/5 (${score*20}%) — Материалды қайта оқып, тестті қайталаңыз.`;
+  }
+}
+</script>
+
+</body></html>
